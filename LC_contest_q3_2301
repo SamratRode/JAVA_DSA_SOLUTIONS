@@ -1,0 +1,40 @@
+class Solution {
+    public List<Integer> findLonely(int[] nums) {
+        int temp=0;
+        List<Integer> not_lonely=new ArrayList();
+        List<Integer> lonely=new ArrayList();
+        //sorting
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
+                if(nums[i]>nums[j]){
+                    if(nums[i]-nums[j]==1){
+                        not_lonely.add(nums[i]);
+                        not_lonely.add(nums[j]);
+                    }
+                    
+                    temp=nums[i];
+                    nums[i]=nums[j];
+                    nums[j]=temp;
+                }
+                else if(nums[i]==nums[j]){
+                    not_lonely.add(nums[i]);
+                    not_lonely.add(nums[j]);
+                }
+                else{
+                    if(nums[i]-nums[j]==-1){
+                        not_lonely.add(nums[i]);
+                        not_lonely.add(nums[j]);
+                    }
+                    
+                }
+                
+            }
+        }
+        for(int i=0;i<nums.length;i++){
+            lonely.add(nums[i]);
+        }
+        lonely.removeAll(not_lonely);
+        return lonely;
+        
+    }
+}
